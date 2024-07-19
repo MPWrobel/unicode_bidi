@@ -5,5 +5,8 @@ require_relative "unicode_bidi/unicode_bidi"
 
 module UnicodeBidi
   class Error < StandardError; end
-  # Your code goes here...
+
+  def self.bidi(text)
+    text.split("\n").map { |line| UnicodeBidi.bidi_inner(line) }.join("\n")
+  end
 end
