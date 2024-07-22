@@ -1,8 +1,8 @@
 use magnus::{function, prelude::*, Error, Ruby};
-use unicode_bidi::BidiInfo;
+use unicode_bidi::{BidiInfo, Level};
 
 fn bidi_inner(text: String) -> String {
-    let bidi_info = BidiInfo::new(&text, None);
+    let bidi_info = BidiInfo::new(&text, Some(Level::rtl()));
 
     bidi_info
         .paragraphs
